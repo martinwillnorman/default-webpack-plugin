@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack --mode development",
+    "dev": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production"
   },
   "devDependencies": {
@@ -23,6 +23,7 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1",
     "webpack-md5-hash": "^0.0.6",
     "webpack-node-externals": "^1.7.2"
   }
