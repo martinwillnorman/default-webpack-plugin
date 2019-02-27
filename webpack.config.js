@@ -13,14 +13,17 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].[chunkhash].js"
+    filename: "[name].[hash].js"
   },
   target: "node",
   externals: [nodeExternals()],
+  devServer: {
+    hot: true
+  },
   plugins: [
     new CleanWebpackPlugin(["dist/*"]),
     new MiniCssExtractPlugin({
-      filename: "style.[contenthash].css"
+      filename: "style.[hash].css"
     }),
     new HtmlWebpackPlugin({
       inject: false,
