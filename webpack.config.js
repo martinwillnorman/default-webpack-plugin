@@ -35,23 +35,25 @@ module.exports = {
           "sass-loader"
         ]
       },
-      // {
-      //   test: /\.(jp(e*)g|png|gif|svg)$/,
-      //   use: [
-      //     {
-      //       loader: "url-loader",
-      //       options: {
-      //         limit: 8920,
-      //         name: "images/[hash]-[name].[ext]"
-      //       }
-      //     }
-      //   ]
-      // },
+      {
+        test: /\.(svg|gif|png|jpe?g)$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8920,
+              fallback: "file-loader",
+              outputPath: "svg-gifs/"
+            }
+          }
+        ]
+      },
       {
         test: /\.(jpe?g|png)$/i,
         loader: "responsive-loader",
         options: {
-          adapter: require("responsive-loader/sharp")
+          adapter: require("responsive-loader/sharp"),
+          outputPath: "responsive-images/"
         }
       }
     ]
@@ -59,7 +61,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(["dist/*"]),
     new MiniCssExtractPlugin({
-      filename: "style.[hash].css"
+      filename: "main.[hash].css"
     }),
     new HtmlWebpackPlugin({
       inject: false,
@@ -68,7 +70,7 @@ module.exports = {
       filename: "index.html"
     }),
     new WebpackMd5Hash(),
-    new CopyWebpackPlugin([{ from: "src/static", to: "images" }]),
+    new CopyWebpackPlugin([{ from: "src/static", to: "static" }]),
     new ImageminPlugin({
       test: /\.(jpe?g|png|gif|svg)$/i,
       pngquant: {

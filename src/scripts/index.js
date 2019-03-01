@@ -1,7 +1,8 @@
 import "../styles/main.scss";
-const responsiveImage = require("../images/light-1.jpg?sizes[]=450,sizes[]=800,sizes[]=1200,sizes[]=2200");
+import clockImg from "../images/clock.jpg";
 
 const newImg = document.createElement("img");
-newImg.srcset = responsiveImage.srcSet;
+
+newImg.src = clockImg;
 
 document.body.appendChild(newImg);

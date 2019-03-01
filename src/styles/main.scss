@@ -5,12 +5,20 @@ h1 {
   display: flex;
 }
 
-// .clock {
-//   // background: url("../images/light-1.jpg?size=500");
-//   background-size: cover;
-//   height: 500px;
-//   width: 500px;
-// }
+.clock {
+  background: url("../images/clock.jpg");
+  background-size: cover;
+  height: 500px;
+  width: 500px;
+}
+
+.bark {
+  height: 500px;
+  width: 500px;
+  background-color: aliceblue;
+  background-image: url("../images/sample.svg");
+  background-size: cover;
+}
 
 ::placeholder {
   color: grey;
