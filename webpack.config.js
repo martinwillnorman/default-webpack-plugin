@@ -29,24 +29,30 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          "style-loader",
           MiniCssExtractPlugin.loader,
           "css-loader",
           "postcss-loader",
           "sass-loader"
         ]
       },
+      // {
+      //   test: /\.(jp(e*)g|png|gif|svg)$/,
+      //   use: [
+      //     {
+      //       loader: "url-loader",
+      //       options: {
+      //         limit: 8920,
+      //         name: "images/[hash]-[name].[ext]"
+      //       }
+      //     }
+      //   ]
+      // },
       {
-        test: /\.(jp(e*)g|png|gif|svg)$/,
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              limit: 8920,
-              name: "images/[hash]-[name].[ext]"
-            }
-          }
-        ]
+        test: /\.(jpe?g|png)$/i,
+        loader: "responsive-loader",
+        options: {
+          adapter: require("responsive-loader/sharp")
+        }
       }
     ]
   },
@@ -62,7 +68,7 @@ module.exports = {
       filename: "index.html"
     }),
     new WebpackMd5Hash(),
-    new CopyWebpackPlugin([{ from: "src/images", to: "images" }]),
+    new CopyWebpackPlugin([{ from: "src/static", to: "images" }]),
     new ImageminPlugin({
       test: /\.(jpe?g|png|gif|svg)$/i,
       pngquant: {
