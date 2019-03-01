@@ -1,4 +1,7 @@
 import "../styles/main.scss";
-// const responsiveImage = require("../images/light-1.jpg?sizes[]=100,sizes[]=200,sizes[]=300");
+const responsiveImage = require("../images/light-1.jpg?sizes[]=450,sizes[]=800,sizes[]=1200,sizes[]=2200");
 
-console.log("Hello World");
+const newImg = document.createElement("img");
+newImg.srcset = responsiveImage.srcSet;
+
+document.body.appendChild(newImg);
