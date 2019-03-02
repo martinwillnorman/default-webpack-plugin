@@ -60,7 +60,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(jpe?g|png)$/i,
+        test: /\.(jpe?g|png|gif)$/i,
         loader: "responsive-loader",
         options: {
           adapter: require("responsive-loader/sharp"),
