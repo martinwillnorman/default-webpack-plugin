@@ -36,17 +36,28 @@ module.exports = {
         ]
       },
       {
-        test: /\.(svg|gif|png|jpe?g)$/,
+        test: /\.(gif|png|jpe?g)$/,
         use: [
           {
             loader: "url-loader",
             options: {
-              limit: 8920,
+              limit: 10 * 1024,
               fallback: "file-loader",
-              outputPath: "svg-gifs/"
+              outputPath: "file-loader/"
             }
           }
         ]
+      },
+      {
+        test: /\.svg/,
+        use: {
+          loader: "svg-url-loader",
+          options: {
+            limit: 10 * 1024,
+            noquotes: true,
+            outputPath: "svgs/"
+          }
+        }
       },
       {
         test: /\.(jpe?g|png)$/i,
