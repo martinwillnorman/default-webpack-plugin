@@ -92,7 +92,8 @@ module.exports = {
         interlaced: true
       },
       svgo: {
-        removeViewBox: true
+        removeViewBox: false,
+        removeDimensions: true
       },
       plugins: [ImageminMozjpeg({})]
     })
